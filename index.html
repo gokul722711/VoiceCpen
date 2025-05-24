@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceCpen - Voice Driven Code IDE</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+    <script type="module" src="scripts.js"></script>
+    <script>
+        // Initialize Monaco Editor when the page loads
+        window.onload = function () {
+            require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                window.editor = monaco.editor.create(document.getElementById('code-editor'), {
+                    // value: `// Start typing your code here...`,
+                    language: 'javascript', // Default language set to JavaScript
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
+
+                // Change editor language based on dropdown selection
+                document.getElementById('language').addEventListener('change', (event) => {
+                    const selectedLang = event.target.value;
+                    monaco.editor.setModelLanguage(window.editor.getModel(), selectedLang);
+                    document.getElementById('selected-language').textContent = selectedLang.charAt(0).toUpperCase() + selectedLang.slice(1);
+                });
+            });
+        };
+    </script>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="header-content">
+            <h1>VoiceCpen</h1>
+        </div>
+        <div id="nav-icon">&#9776;</div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="#history">History</a></li>
+            <li><a href="#help">Help</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Project Description Section -->
+    <section id="project-description">
+        <p>This project is a voice-driven code editor that allows users to give voice commands to generate code inside a live coding environment.</p>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions">
+        <p>1) Specify the programming language</p>
+        <p>2) Provide voice input to generate code</p>
+        <div id="language-selection">
+            <label for="language">Select Language:</label>
+            <select id="language">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="go">Go</option>
+                <option value="typescript">TypeScript</option>
+                <option value="swift">Swift</option>
+            </select>
+            <p>The selected language is: <span id="selected-language">JavaScript</span></p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section id="main-content">
+        <!-- Start Recording Button -->
+        <button class="button" id="voice-command">Start Recording</button>
+
+        <!-- Main Box for Transcriptions and Code Editor -->
+        <div id="main-box">
+            <!-- Live Transcriptions Section -->
+            <section id="transcriptions-container">
+                <h2>Live Transcriptions</h2>
+                <div id="transcription-box"></div>
+            </section>
+
+            <!-- Monaco Editor Section -->
+            <div id="code-editor"></div>
+        </div>
+
+<div id="bluebox">
+
+    <!-- <section id="contbox"> -->
+        <div id="transcription-controls">
+            <button class="button" id="reset-last">Delete Last Transcript</button>
+            <button class="button" id="reset-all">Delete All Transcriptions</button>
+        </div>
+    <!-- </section> -->
+    <div class="dropdown">
+        <button class="dropbtn">Editor Actions &#9662;</button> <!-- 'v' icon -->
+        <div class="dropdown-content">
+            <button id="formatCode">Format Code</button>
+            <button id="resetCode">Reset Code</button>
+            <button id="saveCode">Save Code</button>
+        </div>
+    </div>
+</div>
+    <!-- Footer Section -->
+    <footer>
+        <p>Powered by Gokul's Speech-to-Text and Code Generation - VoiceCpen</p>
+    </footer>
+
+    <!-- JavaScript to add functionality -->
+    <script src="nlp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@nlpjs/nlp@latest"></script>
+</body>
+</html>

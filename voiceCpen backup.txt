@@ -1,0 +1,545 @@
+voiceCpen backup
+
+#index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceCpen - Voice Driven Code IDE</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Monaco Editor Loader -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.js"></script>
+    <script>
+        // Initialize Monaco Editor when the page loads
+        window.onload = function () {
+            require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                window.editor = monaco.editor.create(document.getElementById('code-editor'), {
+                    value: `// Start typing your code here...`,
+                    language: 'javascript', // Default language set to JavaScript
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
+            });
+        };
+    </script>
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="VoiceCpen Logo" id="logo">
+            <h1>VoiceCpen</h1>
+        </div>
+        <div id="nav-icon">&#9776;</div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="#history">History</a></li>
+            <li><a href="#help">Help</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Project Description Section -->
+    <section id="project-description">
+        <p>This project is a voice-driven code editor that allows users to give voice commands to generate code inside a live coding environment.</p>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions">
+        <p>1) Specify the programming language</p>
+        <p>2) Provide voice input to generate code</p>
+        <div id="language-selection">
+            <label for="language">Select Language:</label>
+            <select id="language">
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="java">Java</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="go">Go</option>
+                <option value="typescript">TypeScript</option>
+                <option value="swift">Swift</option>
+            </select>
+            <p>The selected language is: <span id="selected-language">JavaScript</span></p>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section id="main-content">
+        <!-- Start Recording Button -->
+        <button class="button" id="voice-command">Start Recording</button>
+
+        <!-- Main Box for Transcriptions and Code Editor -->
+        <div id="main-box">
+            <!-- Live Transcriptions Section -->
+            <section id="transcriptions-container">
+                <h2>Live Transcriptions</h2>
+                <div id="transcription-box"></div>
+            </section>
+
+            <!-- Monaco Editor Section -->
+            <div id="code-editor"></div>
+        </div>
+
+        <!-- Transcription Controls -->
+        <div id="transcription-controls">
+            <button class="button" id="reset-last">Delete Last Transcript</button>
+            <button class="button" id="reset-all">Delete All Transcriptions</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Powered by Gokul's Speech-to-Text and Code Generation - VoiceCpen</p>
+    </footer>
+
+    <!-- JavaScript to add functionality -->
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+#styles.css
+
+/* Basic styles for body and layout */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #1e272e;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Update burger icon styling */
+#nav-icon {
+    position: right;
+    top: 10px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100; /* Higher z-index than the navigation bar */
+}
+
+/* When the navigation bar is open, add some spacing for the burger icon */
+#nav-menu.active {
+    right: 0;
+    padding-top: 50px; /* Ensure the nav items don't overlap with the icon */
+}
+
+/* Navigation menu styles */
+#nav-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background-color: #1e272e;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+#nav-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+#nav-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+}
+
+#nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+#nav-menu ul li a:hover {
+    background-color: #f39c12;
+    color: black;
+}
+
+/* Section for Project Description */
+#project-description {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+#project-description p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Instructions Section */
+#instructions {
+    padding-left: 20px;
+    background-color: #f4f4f4;
+    text-align: left;
+    margin: 0 20px;
+}
+
+/* Styles for body, header, and basic layout are unchanged */
+
+#language-selection {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#language {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#language:hover {
+    border-color: #f39c12;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#language:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+/* Main content layout and other styles remain the same */
+
+/* Transcription control buttons at the bottom */
+.button {
+    background-color: #f39c12;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e67e22;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content layout */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main box for transcription and code editor */
+#main-box {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 70vh; /* Adjust height to ensure both sections fit the screen */
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* Transcriptions container */
+#transcriptions-container {
+    width: 35%;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 15px;
+    overflow-y: auto;
+    height: 94%;
+}
+
+#transcription-box {
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.transcription-item {
+    margin-bottom: 10px;
+    background-color: #111;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Monaco editor container */
+#code-editor {
+    width: 65%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+/* Start Recording button */
+#voice-command {
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+/* Transcription control buttons at the bottom */
+#transcription-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.button {
+    background-color: #f39c12;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+}
+/* Footer styles */
+footer {
+    background-color: #1e272e;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}
+
+#script.js
+// Declare a global editor variable
+let editor;
+
+// Initialize Monaco Editor
+require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' } });
+require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(document.getElementById('code-editor'), {
+        value: `// Start typing your code here...`,
+        language: 'javascript', // Default language set to JavaScript
+        theme: 'vs-dark',
+        automaticLayout: true
+    });
+
+    // Change editor language based on dropdown selection
+    document.getElementById('language').addEventListener('change', (event) => {
+        const selectedLang = event.target.value;
+        monaco.editor.setModelLanguage(editor.getModel(), selectedLang);
+        document.getElementById('selected-language').textContent = selectedLang.charAt(0).toUpperCase() + selectedLang.slice(1);
+    });
+});
+
+// Initialize Speech Recognition (Web Speech API)
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+let isRecording = false;
+
+// Command parsing function
+function parseCommand(transcript) {
+    const command = transcript.toLowerCase();
+
+    if (command.includes('create function named')) {
+        const functionName = command.replace('create function named', '').trim();
+        return `function ${functionName}() {\n    // code here\n}`;
+    }
+
+    if (command.includes('create variable named')) {
+        const variableName = command.replace('create variable named', '').trim();
+        return `let ${variableName};`;
+    }
+
+    if (command.includes('create class named')) {
+        const className = command.replace('create class named', '').trim();
+        return `class ${className} {\n    constructor() {\n        // constructor code here\n    }\n}\n`;
+    }
+
+    if (command.includes('create method named')) {
+        const methodName = command.replace('create method named', '').trim();
+        return `function ${methodName}() {\n    // method code here\n}`;
+    }
+
+    if (command.includes('create if statement')) {
+        return `if (/* condition */) {\n    // code here\n}`;
+    }
+
+    if (command.includes('create for loop')) {
+        return `for (let i = 0; i < /* condition */; i++) {\n    // code here\n}`;
+    }
+
+    if (command.includes('create while loop')) {
+        return `while (/* condition */) {\n    // code here\n}`;
+    }
+
+    if (command.includes('create try catch block')) {
+        return `try {\n    // code here\n} catch (error) {\n    // handle error\n}`;
+    }
+
+    if (command.includes('create switch case')) {
+        return `switch (/* expression */) {\n    case /* value */:\n        // code here\n        break;\n    default:\n        // default code here\n}`;
+    }
+
+    if (command.includes('create import statement')) {
+        const importStatement = command.replace('create import statement', '').trim();
+        return `import ${importStatement};`;
+    }
+
+    return null; // Return null if no command matches
+}
+
+// Insert code into Monaco Editor
+function insertCodeIntoEditor(codeSnippet) {
+    if (!editor) {
+        console.error('Editor not initialized');
+        return;
+    }
+
+    const position = editor.getPosition(); // Get current cursor position
+
+    editor.executeEdits('', [{
+        range: new monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column),
+        text: codeSnippet,
+        forceMoveMarkers: true
+    }]);
+
+    // Move cursor to the end of inserted code
+    const lines = codeSnippet.split('\n');
+    editor.setPosition({
+        lineNumber: position.lineNumber + lines.length - 1,
+        column: lines[lines.length - 1].length + 1
+    });
+}
+
+// Toggle voice recognition
+function toggleVoiceRecognition() {
+    if (isRecording) {
+        recognition.stop();
+    } else {
+        recognition.start();
+    }
+}
+
+// Handle voice command results
+recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    document.getElementById('transcription-box').innerHTML += `
+        <div class="transcription-item">${transcript}</div>
+    `;
+    console.log('Voice command:', transcript);
+
+    // Parse and handle the command
+    const codeSnippet = parseCommand(transcript);
+    if (codeSnippet) {
+        insertCodeIntoEditor(codeSnippet);
+    }
+};
+
+// Handle errors during voice recognition
+recognition.onerror = (event) => {
+    console.error('Speech recognition error:', event.error);
+};
+
+// Handle end of speech recognition
+recognition.onend = () => {
+    isRecording = false;
+    document.getElementById('voice-command').textContent = 'Start Recording'; // Reset button text after stopping
+};
+
+// Start/Stop Recording button
+document.getElementById('voice-command').addEventListener('click', () => {
+    toggleVoiceRecognition();
+    document.getElementById('voice-command').textContent = isRecording ? 'Start Recording' : 'Stop Recording';
+    isRecording = !isRecording;
+});
+
+// Reset last transcript button
+document.getElementById('reset-last').addEventListener('click', () => {
+    const transcriptionBox = document.getElementById('transcription-box');
+    const lastChild = transcriptionBox.lastElementChild;
+    if (lastChild) {
+        transcriptionBox.removeChild(lastChild);
+    }
+});
+
+// Reset all transcripts button
+document.getElementById('reset-all').addEventListener('click', () => {
+    document.getElementById('transcription-box').innerHTML = '';
+});
+
+// Update the language options for Monaco Editor
+document.getElementById('language').innerHTML = `
+    <option value="javascript">JavaScript</option>
+    <option value="python">Python</option>
+    <option value="java">Java</option>
+    <option value="cpp">C++</option>
+    <option value="csharp">C#</option>
+    <option value="ruby">Ruby</option>
+    <option value="php">PHP</option>
+    <option value="go">Go</option>
+    <option value="typescript">TypeScript</option>
+    <option value="swift">Swift</option>
+`;
+
+// Toggle navigation menu visibility
+document.getElementById('nav-icon').addEventListener('click', () => {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('active'); // Toggles between showing and hiding the menu
+});

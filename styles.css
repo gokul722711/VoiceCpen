@@ -1,0 +1,301 @@
+/* Basic styles for body and layout */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #1e272e;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #f39c12;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Update burger icon styling */
+#nav-icon {
+    position: right;
+    top: 10px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100; /* Higher z-index than the navigation bar */
+}
+
+/* When the navigation bar is open, add some spacing for the burger icon */
+#nav-menu.active {
+    right: 0;
+    padding-top: 50px; /* Ensure the nav items don't overlap with the icon */
+}
+
+/* Navigation menu styles */
+#nav-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background-color: #1e272e;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+#nav-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+#nav-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+}
+
+#nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+#nav-menu ul li a:hover {
+    background-color: #f39c12;
+    color: black;
+}
+
+/* Section for Project Description */
+#project-description {
+    padding: 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+#project-description p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Instructions Section */
+#instructions {
+    padding-left: 20px;
+    background-color: #f4f4f4;
+    text-align: left;
+    margin: 0 20px;
+}
+
+#language-selection {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#language {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#language:hover {
+    border-color: #f39c12;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#language:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+.button {
+    background-color: #f39c12;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 28px 0 28px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #e67e22;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content layout */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main box for transcription and code editor */
+#main-box {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 70vh; /* Adjust height to ensure both sections fit the screen */
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* Transcriptions container */
+#transcriptions-container {
+    width: 35%;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 15px;
+    overflow-y: auto;
+    height: 94%;
+}
+
+#transcription-box {
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.transcription-item {
+    margin-bottom: 10px;
+    background-color: #111;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Monaco editor container */
+#code-editor {
+    width: 65%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+/* Start Recording button */
+#voice-command {
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+#bluebox{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Transcription control buttons */
+#transcription-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* The container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  /* Dropdown button with 'v' icon */
+  .dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    font-size: 17.5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin-right: 15px;
+  }
+  
+  /* Dropdown button on hover */
+  .dropbtn:hover {
+    background-color: #444;
+  }
+  
+  /* The dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Dropdown content buttons */
+  .dropdown-content button {
+    background-color: white;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  /* Change color on hover */
+  .dropdown-content button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown when the user clicks the button */
+  .dropdown.show .dropdown-content {
+    display: block;
+  }  
+
+/* Footer styles */
+footer {
+    background-color: #1e272e;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}

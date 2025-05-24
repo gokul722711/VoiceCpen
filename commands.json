@@ -1,0 +1,188 @@
+{
+  "commands": [
+    {
+      "pattern": "create a calculator with dynamic variable choosing",
+      "intent": "functionality.createDynamicCalculator"
+    },
+    {
+      "pattern": "create a calculator",
+      "intent": "functionality.createCalculator"
+    },
+    {
+      "pattern": "create a to-do list",
+      "intent": "functionality.createToDoList"
+    },
+    {
+      "pattern": "create a guessing game",
+      "intent": "functionality.createGuessingGame"
+    },
+    {
+      "pattern": "create a countdown timer",
+      "intent": "functionality.createCountdownTimer"
+    },
+    {
+      "pattern": "create a web server",
+      "intent": "functionality.createWebServer"
+    },
+    {
+      "pattern": "create a chat application",
+      "intent": "functionality.createChatApplication"
+    },
+    {
+      "pattern": "create a random quote generator",
+      "intent": "functionality.createRandomQuoteGenerator"
+    },
+    {
+      "pattern": "create a quiz app",
+      "intent": "functionality.createQuizApp"
+    },
+    {
+      "pattern": "create a fibonacci sequence generator",
+      "intent": "functionality.createFibonacciGenerator"
+    },
+    {
+      "pattern": "create a web scraper",
+      "intent": "functionality.createWebScraper"
+    },
+    {
+      "pattern": "create a basic website structure",
+      "intent": "functionality.createWebsiteStructure"
+    },
+    {
+      "pattern": "create a variable",
+      "intent": "code.createVariable"
+    },
+    {
+      "pattern": "define a function",
+      "intent": "code.defineFunction"
+    },
+    {
+      "pattern": "add a comment",
+      "intent": "code.addComment"
+    },
+    {
+      "pattern": "import a library",
+      "intent": "code.importLibrary"
+    },
+    {
+      "pattern": "write a loop",
+      "intent": "code.writeLoop"
+    },
+    {
+      "pattern": "set a value",
+      "intent": "code.setValue"
+    },
+    {
+      "pattern": "initialize an array",
+      "intent": "code.initializeArray"
+    },
+    {
+      "pattern": "print a message",
+      "intent": "code.printMessage"
+    },
+    {
+      "pattern": "delete a file",
+      "intent": "code.deleteFile"
+    },
+    {
+      "pattern": "update a record",
+      "intent": "code.updateRecord"
+    },
+    {
+      "pattern": "create a class",
+      "intent": "code.createClass"
+    },
+    {
+      "pattern": "create a new variable",
+      "intent": "code.createVariable"
+    },
+    {
+      "pattern": "define a new function",
+      "intent": "code.defineFunction"
+    },
+    {
+      "pattern": "insert a comment",
+      "intent": "code.addComment"
+    },
+    {
+      "pattern": "load a library",
+      "intent": "code.importLibrary"
+    },
+    {
+      "pattern": "write a for loop",
+      "intent": "code.writeLoop"
+    },
+    {
+      "pattern": "assign a value",
+      "intent": "code.setValue"
+    },
+    {
+      "pattern": "initialize a list",
+      "intent": "code.initializeArray"
+    },
+    {
+      "pattern": "display a message",
+      "intent": "code.printMessage"
+    },
+    {
+      "pattern": "remove a file",
+      "intent": "code.deleteFile"
+    },
+    {
+      "pattern": "modify a record",
+      "intent": "code.updateRecord"
+    },
+    {
+      "pattern": "define a class",
+      "intent": "code.createClass"
+    },
+    {
+      "pattern": "create an if condition",
+      "intent": "code.createIfCondition"
+    },
+    {
+      "pattern": "print a message",
+      "intent": "code.printMessage"
+    },
+    {
+      "pattern": "create a c++ program",
+      "intent": "code.createCppProgram"
+    },
+    {
+      "pattern": "create a python program",
+      "intent": "code.createPythonProgram"
+    },
+    {
+      "pattern": "create a java program",
+      "intent": "code.createJavaProgram"
+    },
+    {
+      "pattern": "create a javascript program",
+      "intent": "code.createJavascriptProgram"
+    },
+    {
+      "pattern": "create a ruby program",
+      "intent": "code.createRubyProgram"
+    },
+    {
+      "pattern": "create a new C++ program",
+      "intent": "code.createCppProgram"
+    },
+    {
+      "pattern": "create a c plus plus program",
+      "intent": "code.createCppProgram"
+    },
+    {
+      "pattern": "create a new C++ program",
+      "intent": "code.createCppProgram"
+    },
+    {
+      "pattern": "create a new C++ program",
+      "intent": "code.createCppProgram"
+    },
+    {
+      "pattern": "create a new C++ program",
+      "intent": "code.createCppProgram"
+    }
+  ]
+}

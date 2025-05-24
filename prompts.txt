@@ -1,0 +1,17 @@
+for the command
+{
+      "pattern": "create a calculator with dynamic variable choosing",  
+    },
+create intent and create similar functionality structure
+case 'functionality.createCalculator':
+                    if (language === 'javascript') codeSnippet = function calculator(a, b, operation) {\n    switch (operation) {\n        case 'add': return a + b;\n        case 'subtract': return a - b;\n        case 'multiply': return a * b;\n        case 'divide': return a / b;\n        default: return 'Invalid operation';\n    }\n};
+                    else if (language === 'python') codeSnippet = def calculator(a, b, operation):\n    if operation == 'add': return a + b\n    elif operation == 'subtract': return a - b\n    elif operation == 'multiply': return a * b\n    elif operation == 'divide': return a / b\n    else: return 'Invalid operation';
+                    else if (language === 'java') codeSnippet = public class Calculator {\n    public static double calculate(double a, double b, String operation) {\n        switch (operation) {\n            case "add": return a + b;\n            case "subtract": return a - b;\n            case "multiply": return a * b;\n            case "divide": return a / b;\n            default: return 0;\n        }\n    }\n};
+                    else if (language === 'cpp') codeSnippet = double calculator(double a, double b, const std::string &operation) {\n    if (operation == "add") return a + b;\n    else if (operation == "subtract") return a - b;\n    else if (operation == "multiply") return a * b;\n    else if (operation == "divide") return a / b;\n    else return 0;\n};
+                    else if (language === 'ruby') codeSnippet = def calculator(a, b, operation)\n    case operation\n    when 'add'\n        a + b\n    when 'subtract'\n        a - b\n    when 'multiply'\n        a * b\n    when 'divide'\n        a / b\n    else\n        'Invalid operation'\n    end\nend;
+                    else if (language === 'php') codeSnippet = function calculator($a, $b, $operation) {\n    switch ($operation) {\n        case 'add': return $a + $b;\n        case 'subtract': return $a - $b;\n        case 'multiply': return $a * $b;\n        case 'divide': return $a / $b;\n        default: return 'Invalid operation';\n    }\n};
+                    else if (language === 'go') codeSnippet = func calculator(a float64, b float64, operation string) float64 {\n    switch operation {\n    case "add": return a + b\n    case "subtract": return a - b\n    case "multiply": return a * b\n    case "divide": return a / b\n    default: return 0\n    }\n};
+                    else if (language === 'typescript') codeSnippet = function calculator(a: number, b: number, operation: string): number {\n    switch (operation) {\n        case 'add': return a + b;\n        case 'subtract': return a - b;\n        case 'multiply': return a * b;\n        case 'divide': return a / b;\n        default: throw new Error('Invalid operation');\n    }\n};
+                    else if (language === 'swift') codeSnippet = func calculator(a: Double, b: Double, operation: String) -> Double {\n    switch operation {\n    case "add": return a + b\n    case "subtract": return a - b\n    case "multiply": return a * b\n    case "divide": return a / b\n    default: return 0\n    }\n};
+                    break;
+
