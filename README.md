@@ -1,4 +1,4 @@
-# VoiceCpen — Voice-Activated Coding Environment
+# VoiceCpen - Voice-Activated Coding Environment
 
 VoiceCpen is an **AI-powered voice-controlled coding environment** that lets you write, edit, and control code using **natural voice commands**.  
 It features a browser-based interface, customizable voice command mappings, and optional Python backend utilities for text-to-speech (TTS) or NLP-based code generation.
